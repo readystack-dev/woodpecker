@@ -1,0 +1,9 @@
+{
+  "schema": "kitforge.source_tree_hash.v1",
+  "slug": "woodpecker",
+  "repo": "https://github.com/woodpecker-ci/woodpecker",
+  "ref": "v3.20.1",
+  "commit": "3f1bb0bd0db28e410ad797034d75780116122c91",
+  "tree_listing_sha256": "d66ceaca9c7b409dcb5c895a1aa9e92a77c3345e3a99f9125c0cba89bd06e09c",
+  "file_count": 1736
+}

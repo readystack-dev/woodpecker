@@ -1,0 +1,46 @@
+{
+  "bases": [
+    {
+      "digest": "sha256:fb7cceb528b47141eccd9b60bf3cbd27d5ef5f8cf5b7d338bec866da495b50dc",
+      "layout": "bases/golang_1.27.4-bookworm_4fa7c968ba93.oci",
+      "ref": "golang:1.27.4-bookworm@sha256:4fa7c968ba93f1635670522dbb01a2c78150443e1385746924566079f36570ea"
+    },
+    {
+      "digest": "sha256:77eb101c607d6e3d4f5ad0c8a02c2136c689b98aba1f359e6502ba517e5c57ec",
+      "layout": "bases/ubuntu_24.04_2198e4c65076.oci",
+      "ref": "ubuntu:24.04@sha256:2198e4c65076e9cb0b3d695219df667c0e3b0072da64ca3c2648aca17dcecaf5"
+    }
+  ],
+  "engine": {
+    "archive": "toolchain/buildkit.tar",
+    "image_digest": "sha256:e0e67ea9c4bb07bdef683e29f70f3b623d1eb9c82274a9ec04e6bb0511449fb0",
+    "kind": "buildkit",
+    "tag": "moby/buildkit:v0.31.2"
+  },
+  "inputs": {
+    "context": ".",
+    "dockerfile": "Dockerfile.offline.pinned",
+    "mtime_policy": "clamp",
+    "source_date_epoch": 1794451837,
+    "tree_hash": "sha256:3b5880f55823a2554e9b5c0a468f5098259d3a0a249e7461047d45d16879b210"
+  },
+  "probe": {
+    "env": {
+      "WOODPECKER_GITHUB": "true",
+      "WOODPECKER_GITHUB_CLIENT": "verify-only-not-a-real-client"
+    },
+    "http_path": "/healthz",
+    "port": 8000,
+    "secrets": [
+      "WOODPECKER_GITHUB_SECRET",
+      "WOODPECKER_AGENT_SECRET"
+    ],
+    "timeout_s": 180
+  },
+  "schema": "readystack-rebuild-bundle/v0.1",
+  "subject": {
+    "config_digest": "sha256:9952630305567b6a7aad10307e1f77f2431cb5ebc364a48b838fac1e4a6883dc",
+    "image_manifest_digest": "sha256:5bfc6ee2996955d554260ecf7057f2b7e17908460299aa905d79d51c2f73add8",
+    "name": "docker.io/readystack/woodpecker:v3.20.1-CE-ubuntu24.04-r2"
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "apt_refresh": [
+    {
+      "min_version": "2.8.4ubuntu0.1",
+      "package": "apt",
+      "reason": "CVE-2026-109518: apt 2.8.3 -> 2.8.4ubuntu0.1"
+    },
+    {
+      "min_version": "2.8.4ubuntu0.1",
+      "package": "libapt-pkg6.0t64",
+      "reason": "CVE-2026-109518: libapt-pkg6.0t64 2.8.3 -> 2.8.4ubuntu0.1"
+    },
+    {
+      "min_version": "10.42-4ubuntu2.2",
+      "package": "libpcre2-8-0",
+      "reason": "CVE-2026-103111, CVE-2026-86145, CVE-2026-89156, CVE-2026-89157 \u2026: libpcre2-8-0 10.42-4ubuntu2.1 -> 10.42-4ubuntu2.2"
+    }
+  ],
+  "binaries_from_component_images": [],
+  "binaries_from_source": [
+    {
+      "build_tags": [],
+      "cgo_enabled": 1,
+      "ldflags": "-s -w -X go.woodpecker-ci.org/woodpecker/v3/version.Version=@VERSION_BARE@",
+      "main_pkg": "./cmd/server",
+      "name": "woodpecker-server",
+      "out_path": "/usr/bin/woodpecker-server",
+      "verify_subcmd": "--version"
+    }
+  ],
+  "build_method": "source-rebuild-go",
+  "chain_id": 1065,
+  "dep_bumps": [
+    {
+      "module": "golang.org/x/crypto",
+      "to": "v0.58.0",
+      "why": "clear x/crypto CVEs. Until 2026-11-02 this floor said `latest` and the vendor stage ran `go get golang.org/x/crypto@latest || true`, which took whatever was newest that day and went on if it failed; it is now the floor v0.58.0, the newest golang.org/x/crypto on the Go module proxy on 2026-11-02 (published 2026-10-09) and the version the live release (chain 736) was built with (its SBOM)."
+    },
+    {
+      "module": "golang.org/x/net",
+      "to": "v0.62.0",
+      "why": "GO-2026-6860, GO-2026-6866: golang.org/x/net v0.60.0 -> 0.62.0 (was v0.60.0)"
+    },
+    {
+      "module": "google.golang.org/grpc",
+      "to": "v1.83.2",
+      "why": "GHSA published 2026-09-25 (2 fixable critical/high in grpc <1.83.1, found by gitea 1.27.3's verdict). Floor only: raised where the product's grpc is older, no-op where absent or newer."
+    },
+    {
+      "module": "golang.org/x/image",
+      "to": "v0.45.0",
+      "why": "fixable HIGH (scout 2026-08-17): x/image 0.42.0->0.45.0"
+    },
+    {
+      "module": "github.com/getkin/kin-openapi",
+      "to": "v0.144.0",
+      "why": "GHSA-r277-6w6q-xmqw (CRITICAL) \u2014 github.com/getkin/kin-openapi 0.139.0 is in the vulnerable range; fixed in 0.144.0. Found by scripts/cve-presweep.py against the upstream go.mod BEFORE driving, not after a wasted verdict park. Pinned to the exact fixed version, not @latest, to keep the input set declarative for archive-forward reproducibility."
+    },
+    {
+      "module": "golang.org/x/mod",
+      "to": "v0.40.0",
+      "why": "fixable HIGH (scout 2026-08-17): x/mod 0.38.0->0.40.0"
+    },
+    {
+      "module": "github.com/klauspost/compress",
+      "to": "v1.18.7",
+      "why": "CVE-2026-63209 (GHSA-259r-337f-4rfw, HIGH per GitHub; Scout rates it lower) \u2014 OSV cross-check on zitadel 516 and harbor 519; fleet-wide floor 2026-10-10"
+    }
+  ],
+  "expected_residuals": [],
+  "images": [
+    {
+      "digest": "sha256:4fa7c968ba93f1635670522dbb01a2c78150443e1385746924566079f36570ea",
+      "ref": "golang:1.27.4-bookworm",
+      "role": "builder"
+    },
+    {
+      "digest": "sha256:4fa7c968ba93f1635670522dbb01a2c78150443e1385746924566079f36570ea",
+      "ref": "golang:1.27.4-bookworm",
+      "role": "offline_builder"
+    },
+    {
+      "digest": "sha256:2198e4c65076e9cb0b3d695219df667c0e3b0072da64ca3c2648aca17dcecaf5",
+      "ref": "ubuntu:24.04",
+      "role": "base"
+    }
+  ],
+  "mod_replaces": [],
+  "runtime_base": {
+    "kind": "chisel",
+    "provides": [
+      "sqlite3"
+    ],
+    "shell": true,
+    "slices": [
+      "sqlite3_bins"
+    ]
+  },
+  "schema": "kitforge.toolchain_lock.v1",
+  "slug": "woodpecker",
+  "source": {
+    "builder_image": "golang:1.27.4-bookworm",
+    "commit": "3f1bb0bd0db28e410ad797034d75780116122c91",
+    "commit_epoch": 1793302722,
+    "go_version_required": "1.27.0",
+    "ref": "v3.20.1",
+    "repo": "https://github.com/woodpecker-ci/woodpecker",
+    "source_date_epoch": 1794451837,
+    "source_date_epoch_basis": "release-cut",
+    "source_date_epoch_provenance": "the time release v3.20.1-CE-ubuntu24.04-r2 was cut (2026-11-12T02:50:37Z), by scripts/retarget.py --rev-bump: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit 3f1bb0bd0db2, dated 2026-10-29T19:38:42Z (source.commit_epoch)."
+  },
+  "version": "v3.20.1"
+}

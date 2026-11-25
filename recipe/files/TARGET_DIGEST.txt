@@ -1,0 +1,10 @@
+image_manifest_digest=sha256:5bfc6ee2996955d554260ecf7057f2b7e17908460299aa905d79d51c2f73add8
+config_digest=sha256:9952630305567b6a7aad10307e1f77f2431cb5ebc364a48b838fac1e4a6883dc
+tag=readystack/woodpecker:v3.20.1-CE-ubuntu24.04-r2
+probe_port=8000
+probe_path=/healthz
+probe_timeout=180
+verify_env=WOODPECKER_GITHUB=true
+verify_env=WOODPECKER_GITHUB_CLIENT=verify-only-not-a-real-client
+verify_secret=WOODPECKER_GITHUB_SECRET
+verify_secret=WOODPECKER_AGENT_SECRET

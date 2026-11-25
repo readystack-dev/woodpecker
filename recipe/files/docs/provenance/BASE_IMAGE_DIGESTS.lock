@@ -1,0 +1,2 @@
+# base images for woodpecker (resolve at build_kit)
+golang:1.27.4-bookworm

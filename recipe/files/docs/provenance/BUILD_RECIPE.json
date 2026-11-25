@@ -1,0 +1,56 @@
+{
+  "schema": "kitforge.build_recipe.v1",
+  "slug": "woodpecker",
+  "image": "readystack/woodpecker:v3.20.1-CE-ubuntu24.04-r2",
+  "build_method": "source-rebuild-go",
+  "source": {
+    "repo": "https://github.com/woodpecker-ci/woodpecker",
+    "ref": "v3.20.1",
+    "builder_image": "golang:1.27.4-bookworm",
+    "go_version_required": "1.27.0",
+    "source_date_epoch": 1794451837,
+    "source_date_epoch_provenance": "the time release v3.20.1-CE-ubuntu24.04-r2 was cut (2026-11-12T02:50:37Z), by scripts/retarget.py --rev-bump: ReadyStack dates an image by when its release was packaged (owner 2026-11-10), recorded here once and used by every rebuild of the release; it builds upstream commit 3f1bb0bd0db2, dated 2026-10-29T19:38:42Z (source.commit_epoch).",
+    "commit": "3f1bb0bd0db28e410ad797034d75780116122c91",
+    "source_date_epoch_basis": "release-cut",
+    "commit_epoch": 1793302722
+  },
+  "binaries_from_source": [
+    {
+      "name": "woodpecker-server",
+      "main_pkg": "./cmd/server",
+      "cgo_enabled": 1,
+      "build_tags": [],
+      "ldflags": "-s -w -X go.woodpecker-ci.org/woodpecker/v3/version.Version=@VERSION_BARE@",
+      "out_path": "/usr/bin/woodpecker-server",
+      "verify_subcmd": "--version"
+    }
+  ],
+  "runtime_packages": [
+    "base-files",
+    "base-passwd",
+    "ca-certificates",
+    "coreutils",
+    "dash",
+    "libc6",
+    "libreadline8t64",
+    "libsqlite3-0",
+    "libssl3t64",
+    "libtinfo6",
+    "openssl",
+    "readline-common",
+    "sqlite3",
+    "tzdata",
+    "zlib1g"
+  ],
+  "runtime_base": {
+    "kind": "chisel",
+    "shell": true,
+    "slices": [
+      "sqlite3_bins"
+    ],
+    "provides": [
+      "sqlite3"
+    ],
+    "packages": "vendored/chisel/packages.tsv"
+  }
+}

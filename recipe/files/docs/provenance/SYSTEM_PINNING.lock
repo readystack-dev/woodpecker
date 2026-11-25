@@ -1,0 +1,16 @@
+# a chiselled runtime (runtime_base): the packages the image ships, from vendored/chisel/packages.tsv
+base-files=13ubuntu10.5
+base-passwd=3.6.3build1
+ca-certificates=20260816ubuntu0.24.04.2
+coreutils=9.4-3ubuntu6.3
+dash=0.5.12-6ubuntu5
+libc6=2.39-0ubuntu8.12
+libreadline8t64=8.2-4build1
+libsqlite3-0=3.45.1-1ubuntu2.9
+libssl3t64=3.0.13-0ubuntu3.16
+libtinfo6=6.4+20240113-1ubuntu2.2
+openssl=3.0.13-0ubuntu3.16
+readline-common=8.2-4build1
+sqlite3=3.45.1-1ubuntu2.9
+tzdata=2026e-0ubuntu0.24.04.1
+zlib1g=1:1.3.dfsg-3.1ubuntu2.3
